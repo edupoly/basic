@@ -1,8 +1,13 @@
 import React from 'react'
+export function abc(items,cb){
+    for(let i=0;i<=items.length-1;i++){
+        cb(items[i])
+    }
+}
 
 function Todolist() {
     const [todos,settodos] = React.useState([])
-    const [task, setTask] = React.useState('')
+    const [task, setTask] = React.useState('');
     function addTask(){
         settodos([...todos,task])
     }

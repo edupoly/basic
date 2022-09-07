@@ -7,7 +7,7 @@ import Countries from './Countries';
 function App() {
   return (
     <div className="betterview">
-      <h1 data-testid='head'>Welcome to Testing</h1>
+      <h1 data-testid='head' className='App-welcome-text'>Welcome to Testing</h1>
       <Countries></Countries>
       <Counter></Counter>
       <Todolist></Todolist>

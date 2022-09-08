@@ -10,9 +10,9 @@ afterEach(()=>{
 })
 test('should load countries', async () => { 
     var {getByTestId} = render(<Countries></Countries>)    
-    const searchBtn = screen.getByRole("button", { name: "GetCountries" });
-    expect(searchBtn).not.toBeDisabled();
-    fireEvent.click(searchBtn);
+    // const searchBtn = screen.getByRole("button", { name: "GetCountries" });
+    // expect(searchBtn).not.toBeDisabled();
+    // fireEvent.click(searchBtn);
     expect(await screen.findByText('India')).toBeInTheDocument()
     expect(await screen.findByText('Afghanistan')).toBeInTheDocument()
 })

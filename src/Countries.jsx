@@ -8,6 +8,9 @@ function Countries() {
         .then((res)=>res.json())
         .then(data=>{setcountries(data)})
     }
+    React.useEffect(()=>{
+        getCountries()
+    },[])
   return (
     <div className='betterview'>
         <h1>Countries</h1>

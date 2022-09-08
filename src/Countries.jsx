@@ -15,8 +15,8 @@ function Countries() {
 
         <ul style={{display:'flex','flexWrap':'wrap'}}>
             {
-                countries && countries.map((c)=>{
-                    return (<li style={{width:'100px'}} data-testid="country">
+                countries && countries.map((c,i)=>{
+                    return (<li style={{width:'100px'}} data-testid="country" key={i}>
                                 {c.name}
                             </li>)
                 })

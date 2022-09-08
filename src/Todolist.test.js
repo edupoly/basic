@@ -1,4 +1,4 @@
-import { fireEvent, render } from "@testing-library/react"
+import { fireEvent, render,screen } from "@testing-library/react"
 import Todolist,{ abc} from "./Todolist"
 import greeter from './myfuns'
 test("testing todo",()=>{
@@ -9,8 +9,28 @@ test("testing add todo",()=>{
     const {getByTestId,getAllByTestId,queryAllByTestId}=render(<Todolist></Todolist>)
     fireEvent.change(getByTestId('inputtodo'),{ target: { value: 'go home' } })
     fireEvent.click(getByTestId('addbutton'))
-    expect(getByTestId('todo').firstChild).toHaveTextContent('go home')
-    expect(queryAllByTestId('todo').length).toBe(1)
+    fireEvent.change(getByTestId('inputtodo'),{ target: { value: 'more info' } })
+    fireEvent.click(getByTestId('addbutton'))
+    fireEvent.change(getByTestId('inputtodo'),{ target: { value: 'cypress' } })
+    fireEvent.click(getByTestId('addbutton'))
+    //expect(getAllByTestId('todo').firstChild).toHaveTextContent('go home')
+    expect(queryAllByTestId('todo').length).toBe(3)
+    expect(screen.getAllByRole('listitem').length).toBe(3)
+    expect(screen.getAllByRole('listitem')[0]).toHaveTextContent('go home')
+    expect(screen.getAllByRole('listitem')[1]).toHaveTextContent('more info')
+    expect(screen.getAllByRole('listitem')[2]).toHaveTextContent('cypress')
+    expect(screen.getAllByRole('listitem')[3]).toBeUndefined()
+})
+test('delete todo',()=>{
+    render(<Todolist></Todolist>)
+    fireEvent.change(screen.getByTestId('inputtodo'),{ target: { value: 'go home' } })
+    fireEvent.click(screen.getByTestId('addbutton'))
+    fireEvent.change(screen.getByTestId('inputtodo'),{ target: { value: 'more info' } })
+    fireEvent.click(screen.getByTestId('addbutton'))
+    fireEvent.change(screen.getByTestId('inputtodo'),{ target: { value: 'cypress' } })
+    fireEvent.click(screen.getByTestId('addbutton'))
+    fireEvent.click(screen.getAllByRole("button",{name:'Delete'})[0])
+    expect(screen.getAllByRole('listitem').length).toBe(2)
 })
 test('testing abc ',()=>{
     var mockcb = jest.fn(x=>34+x)

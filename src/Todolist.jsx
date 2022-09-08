@@ -11,6 +11,11 @@ function Todolist() {
     function addTask(){
         settodos([...todos,task])
     }
+    function deleteTask(ind){
+        var temp = [...todos];
+        temp.splice(ind,1)
+        settodos([...temp])
+    }
   return (
     <div className='betterview'>
         <h1>Todolist</h1>
@@ -19,7 +24,11 @@ function Todolist() {
         <ul data-testid='todolist'>
         {
             todos.map((s,i)=>{
-                return <li className="task" data-testid='todo' key={i}>{s}</li>
+                return (
+                <li className="task" data-testid='todo' key={i}>
+                    {s}
+                    <button onClick={()=>{deleteTask(i)}}>Delete</button>
+                </li>)
             })
         }
         </ul>

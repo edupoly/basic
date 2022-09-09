@@ -1,6 +1,6 @@
 import countries from './mockCountries'
 const countriesResponse = countries;
-export default async function fetchMock(){
+export async function fetchMock(){
     console.log("fetch called.... is ABCDEF")
     return {
         ok: true,

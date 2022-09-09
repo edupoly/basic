@@ -1,7 +1,7 @@
 import { fireEvent, render,screen } from "@testing-library/react"
 import Counter from "./Counter"
 import Countries from "./Countries"
-import fetchMock from "./fetchMock"
+import {fetchMock} from "./fetchMock"
 beforeEach(()=>{
     jest.spyOn(window,'fetch').mockImplementation(fetchMock)
 })

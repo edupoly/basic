@@ -10,7 +10,7 @@ function Counter() {
     }
   return (
     <div className='betterview'>
-        <h1 data-testid='counter'>Counter{count}</h1>
+        <h1 data-testid='counter' id="counterval">Counter{count}</h1>
         <button onClick={inc} data-testid='inc'>inc</button>
         <button onClick={dec} data-testid='dec' disabled={count===0}>dec</button>
     </div>
